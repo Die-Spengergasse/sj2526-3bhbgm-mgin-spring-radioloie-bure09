@@ -2,12 +2,14 @@ package at.spengergasse.spring_thymeleaf.controllers;
 
 import at.spengergasse.spring_thymeleaf.entities.Device;
 import at.spengergasse.spring_thymeleaf.entities.DeviceRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 @RequestMapping("/device")
@@ -36,5 +38,20 @@ public class DeviceController {
         deviceRepository.save(device);
         return "redirect:/device/list";
     }
+
+
+    @GetMapping("/delete/{id}")
+    public String deleteDevice(@PathVariable int id) {
+
+        deviceRepository.deleteById(id);
+
+        return "redirect:/device/list";
+    }
+
+
+
+
+
+
 
 }

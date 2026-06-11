@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
+import jakarta.persistence.Column;
 
 @Entity
 @Table(name = "p_patients")
@@ -11,6 +12,8 @@ public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(unique = true)
     private String socialsecuritynumber;
     private String name;
     private String surname;

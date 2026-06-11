@@ -51,17 +51,31 @@
         <tr>
             <th>Type</th>
             <th>Room Number</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="d : ${devices}">
             <td th:text="${d.type}"></td>
             <td th:text="${d.roomnumber}"></td>
+            <td>
+                <a th:href="@{/device/delete/{id}(id=${d.id})}"
+                   class="btn btn-danger"
+                   onclick="return confirm('Gerät wirklich löschen?')">
+                    Löschen
+                </a>
+            </td>
         </tr>
         </tbody>
     </table>
 
-    <a href="/device/add" class="btn-dark-custom">+ New Device</a>
+    <div class="mt-3">
+        <a href="/device/add" class="btn-dark-custom">+ New Device</a>
+
+        <a href="/" class="btn btn-secondary">
+            ← Zur Startseite
+        </a>
+    </div>
 </div>
 
 </body>

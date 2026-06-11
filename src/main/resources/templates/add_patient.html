@@ -9,19 +9,23 @@
             background-color: #f8f8f8;
             color: #1a1a1a;
         }
+
         .page-header {
             background-color: #1a1a1a;
             color: #ffffff;
             padding: 30px 0;
             margin-bottom: 40px;
         }
+
         .form-label {
             font-weight: bold;
         }
+
         .form-control:focus {
             border-color: #1a1a1a;
             box-shadow: 0 0 0 0.2rem rgba(0,0,0,0.2);
         }
+
         .btn-save {
             background-color: #1a1a1a;
             color: #ffffff;
@@ -30,10 +34,12 @@
             padding: 10px;
             font-weight: bold;
         }
+
         .btn-save:hover {
             background-color: #444;
             color: #ffffff;
         }
+
         .btn-back {
             border: 2px solid #1a1a1a;
             color: #1a1a1a;
@@ -44,14 +50,25 @@
             display: block;
             text-align: center;
         }
+
         .btn-back:hover {
             background-color: #1a1a1a;
             color: #ffffff;
         }
+
         .card {
             border: 2px solid #1a1a1a;
             border-radius: 0;
             padding: 30px;
+        }
+
+        .error-box {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-left: 5px solid red;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -63,21 +80,35 @@
 
 <div class="container" style="max-width: 600px;">
     <div class="card">
+
+        <div th:if="${error}" class="error-box">
+            ⚠ <span th:text="${error}"></span>
+        </div>
+
         <form th:action="@{/patient/add}" th:object="${patient}" method="post">
 
             <div class="mb-3">
                 <label class="form-label">Name</label>
-                <input type="text" th:field="*{name}" class="form-control" placeholder="Patient name">
+                <input type="text"
+                       th:field="*{name}"
+                       class="form-control"
+                       placeholder="Patient name">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Surname</label>
-                <input type="text" th:field="*{surname}" class="form-control" placeholder="Patient surname">
+                <input type="text"
+                       th:field="*{surname}"
+                       class="form-control"
+                       placeholder="Patient surname">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Social Security Number</label>
-                <input type="text" th:field="*{socialsecuritynumber}" class="form-control" placeholder="Patient SSN">
+                <input type="text"
+                       th:field="*{socialsecuritynumber}"
+                       class="form-control"
+                       placeholder="Patient SSN">
             </div>
 
             <div class="mb-3">
@@ -92,15 +123,21 @@
 
             <div class="mb-3">
                 <label class="form-label">Birthdate</label>
-                <input type="date" th:field="*{birth}" class="form-control">
+                <input type="date"
+                       th:field="*{birth}"
+                       class="form-control">
             </div>
 
             <div class="mb-3">
-                <button type="submit" class="btn-save">Save Patient</button>
+                <button type="submit" class="btn-save">
+                    Save Patient
+                </button>
             </div>
 
             <div>
-                <a href="/" class="btn-back">← Back</a>
+                <a href="/" class="btn-back">
+                    ← Back
+                </a>
             </div>
 
         </form>

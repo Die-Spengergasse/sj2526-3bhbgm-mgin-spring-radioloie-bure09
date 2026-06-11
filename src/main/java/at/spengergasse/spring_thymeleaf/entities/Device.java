@@ -16,7 +16,11 @@ public class Device {
     private String type;
     private int roomnumber;
 
-    @OneToMany(mappedBy = "device")
+    @OneToMany(
+            mappedBy = "device",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
     private List<Reservation> reservations = new ArrayList<>();
 
     public List<Reservation> getReservations() {

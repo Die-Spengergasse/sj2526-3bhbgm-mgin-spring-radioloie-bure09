@@ -24,6 +24,9 @@
 
 <div class="container" style="max-width: 600px;">
     <div class="card">
+        <div th:if="${error}" class="alert alert-danger">
+            <span th:text="${error}"></span>
+        </div>
         <form th:action="@{/reservation/add}" method="post">
 
             <div class="mb-3">

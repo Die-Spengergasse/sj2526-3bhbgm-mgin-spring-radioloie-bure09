@@ -9,22 +9,27 @@
             background-color: #f8f8f8;
             color: #1a1a1a;
         }
+
         .page-header {
             background-color: #1a1a1a;
             color: #ffffff;
             padding: 30px 0;
             margin-bottom: 40px;
         }
+
         .table {
             border: 2px solid #1a1a1a;
         }
+
         .table thead {
             background-color: #1a1a1a;
             color: #ffffff;
         }
+
         .table tbody tr:hover {
             background-color: #e0e0e0;
         }
+
         .btn-dark-custom {
             background-color: #1a1a1a;
             color: #ffffff;
@@ -32,10 +37,18 @@
             padding: 10px 25px;
             text-decoration: none;
             font-weight: bold;
+            display: inline-block;
         }
+
         .btn-dark-custom:hover {
             background-color: #444;
             color: #ffffff;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -65,7 +78,16 @@
         </tbody>
     </table>
 
-    <a th:href="@{/reservation/add}" class="btn-dark-custom">+ Neue Reservierung</a>
+    <div class="button-container">
+        <a th:href="@{/reservation/add}" class="btn-dark-custom">
+            + Neue Reservierung
+        </a>
+
+        <a href="/" class="btn btn-secondary">
+            ← Zur Startseite
+        </a>
+    </div>
+
 </div>
 
 </body>
