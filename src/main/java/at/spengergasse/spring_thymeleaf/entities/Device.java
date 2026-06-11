@@ -2,14 +2,38 @@ package at.spengergasse.spring_thymeleaf.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "d_devices")
 public class Device {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String type;
-    private String Location;
+    private int roomnumber;
+
+    @OneToMany(mappedBy = "device")
+    private List<Reservation> reservations = new ArrayList<>();
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getType() {
         return type;
@@ -19,28 +43,11 @@ public class Device {
         this.type = type;
     }
 
-    public String getLocation() {
-        return Location;
+    public int getRoomnumber() {
+        return roomnumber;
     }
 
-    public void setLocation(String location) {
-        Location = location;
-    }
-
-    public Device(String type, String location) {
-        this.type = type;
-        Location = location;
-    }
-
-    public Device() {
-    }
-
-    @Override
-    public String toString() {
-        return "Device{" +
-                "id=" + id +
-                ", type='" + type + '\'' +
-                ", Location='" + Location + '\'' +
-                '}';
+    public void setRoomnumber(int roomnumber) {
+        this.roomnumber = roomnumber;
     }
 }

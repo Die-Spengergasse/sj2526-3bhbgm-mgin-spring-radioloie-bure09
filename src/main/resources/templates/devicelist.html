@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Patients List</title>
+    <title>Devices List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -42,32 +42,26 @@
 <body>
 
 <div class="page-header text-center">
-    <h1 class="fw-bold">Patient List</h1>
+    <h1 class="fw-bold">Device List</h1>
 </div>
 
 <div class="container">
     <table class="table table-bordered">
         <thead>
         <tr>
-            <th>Social Security Number</th>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Gender</th>
-            <th>Birth</th>
+            <th>Type</th>
+            <th>Room Number</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="p : ${patients}">
-            <td th:text="${p.socialsecuritynumber}"></td>
-            <td th:text="${p.name}"></td>
-            <td th:text="${p.surname}"></td>
-            <td th:text="${p.gender}"></td>
-            <td th:text="${p.birth}"></td>
+        <tr th:each="d : ${devices}">
+            <td th:text="${d.type}"></td>
+            <td th:text="${d.roomnumber}"></td>
         </tr>
         </tbody>
     </table>
 
-    <a href="/patient/add" class="btn-dark-custom">+ New Patient</a>
+    <a href="/device/add" class="btn-dark-custom">+ New Device</a>
 </div>
 
 </body>

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Patients List</title>
+    <title>Reservation List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -42,32 +42,30 @@
 <body>
 
 <div class="page-header text-center">
-    <h1 class="fw-bold">Patient List</h1>
+    <h1 class="fw-bold">Reservation List</h1>
 </div>
 
 <div class="container">
     <table class="table table-bordered">
         <thead>
         <tr>
-            <th>Social Security Number</th>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Gender</th>
-            <th>Birth</th>
+            <th>Patient</th>
+            <th>Device</th>
+            <th>Start</th>
+            <th>End</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="p : ${patients}">
-            <td th:text="${p.socialsecuritynumber}"></td>
-            <td th:text="${p.name}"></td>
-            <td th:text="${p.surname}"></td>
-            <td th:text="${p.gender}"></td>
-            <td th:text="${p.birth}"></td>
+        <tr th:each="r : ${reservations}">
+            <td th:text="${r.patient.name + ' ' + r.patient.surname}"></td>
+            <td th:text="${r.device.type}"></td>
+            <td th:text="${r.startTime}"></td>
+            <td th:text="${r.endTime}"></td>
         </tr>
         </tbody>
     </table>
 
-    <a href="/patient/add" class="btn-dark-custom">+ New Patient</a>
+    <a th:href="@{/reservation/add}" class="btn-dark-custom">+ Neue Reservierung</a>
 </div>
 
 </body>
